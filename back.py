@@ -24,8 +24,8 @@ def get_user_data(cursor, login):
 
 #change Пользователи
 def set_user_data(login, password):
-    sqlite_update_query = """insert into Users values (?,?,?)"""
-    pass
+    sqlite_update_query = """insert into Users values (?,?)"""
+    cursor.execute(sqlite_update_query, (login,), (password,))
 
 #to log in
 def sign_in(cursor, login, password):
@@ -40,15 +40,14 @@ def sign_in(cursor, login, password):
             return True
 
 #зарегаться
-def sign_up(login, password):
+def sign_up(cursor, login, password):
     results = get_user_data(cursor, login) #get such user like [(1, 'darkur', 'ILOVEHSE')]
     if len(results) == 1: #if user exists
         raise KeyError("User with such login exists")
     else:
-        pass
-    #get_user_data(login)
-    #check if the person exist
-    #if not set_user_data(login)
+        set_user_data(cursor, login, password) #add new user
+        return True
+
 
 
 #функция для построения графиков
