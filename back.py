@@ -47,13 +47,15 @@ def set_swot_data(line,type,name,action,importance,probabilty):
     pass
 
 def change_project(new_project): #выбираем из доступных проектов
+    global current_project
     current_project = new_project
     return True
 
 def create_new_project(new_project):  #new_project - название проекта
     sqlite_update_query = """insert into Projects values (?,?)"""
     cursor.execute(sqlite_update_query, (current_user,new_project))
-    current_project=new_project
+    global current_project
+    current_project = new_project
     return True
 
 
@@ -63,20 +65,20 @@ def view_all_projects():
     return cursor.fetchall()
 
 # read Users
-def get_user_data(cursor, login):
+def get_user_data():
     sqlite_read_query = """select * from Users where login =? """
-    cursor.execute(sqlite_read_query, (login,))
+    cursor.execute(sqlite_read_query, (current_user,))
     return cursor.fetchall()
 
 #change Пользователи
-def set_user_data(login, password):
+def set_user_data(password):
     sqlite_update_query = """insert into Users values (?,?)"""
-    cursor.execute(sqlite_update_query, (login, password))
+    cursor.execute(sqlite_update_query, (current_user, password))
     return True
 
 #to log in
-def sign_in(login, password):
-    results = get_user_data(cursor, login) #get such user like [('darkur', 'ILOVEHSE')]
+def sign_in(password):
+    results = get_user_data() #get such user like [('darkur', 'ILOVEHSE')]
     if len(results) == 0: #if no such user
         raise KeyError("No such user")
     else:
@@ -87,12 +89,12 @@ def sign_in(login, password):
             return True
 
 #зарегаться
-def sign_up(login, password):
-    results = get_user_data(login) #get such user like [('darkur', 'ILOVEHSE')]
+def sign_up(password):
+    results = get_user_data() #get such user like [('darkur', 'ILOVEHSE')]
     if len(results) == 1: #if user exists
         raise KeyError("User with such login exists")
     else:
-        set_user_data(login, password) #add new user
+        set_user_data(password) #add new user
         return True
 
 
