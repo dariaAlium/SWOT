@@ -13,8 +13,25 @@ def create_swot_table():
     cursor.execute("CREATE TABLE IF NOT EXISTS Swot(line integer, project integer,type text,"
                    "name text, action text, importance text, probability text,FOREIGN KEY (project) REFERENCES "
                    "projects (id))")
+    return True
 
+def create_project_table():
+    sqlite_select_query = """CREATE TABLE IF NOT EXISTS Projects (
+        id integer PRIMARY KEY AUTOINCREMENT,
+        login text NOT NULL,
+        name text NOT NULL,
+        FOREIGN KEY (login) REFERENCES Users(login)
+    );"""
+    cursor.execute(sqlite_select_query)
+    return True
 
+def create_user_table():
+    sqlite_select_query = """CREATE TABLE IF NOT EXISTS Users (
+        login text PRIMARY KEY AUTOINCREMENT,
+        password text NOT NULL
+    );"""
+    cursor.execute(sqlite_select_query)
+    return True
 
 #Функция для получения информации по своту для каждой из категорий
 def get_swot_data(type):
@@ -29,11 +46,22 @@ def set_swot_data(line,type,name,action,importance,probabilty):
     #read Swot
     pass
 
-def change_project(new_project):
-    pass
+def change_project(new_project): #выбираем из доступных проектов
+    current_project = new_project
+    return True
 
-def create_new_project(new_project):
-    pass
+def create_new_project(new_project):  #new_project - название проекта
+    sqlite_update_query = """insert into Projects values (?,?)"""
+    cursor.execute(sqlite_update_query, (current_user,new_project))
+    current_project=new_project
+    return True
+
+
+def view_all_projects():
+    sqlite_query = """select * from Projects where login=?"""
+    cursor.execute(sqlite_query, (login,))
+    return cursor.fetchall()
+
 # read Users
 def get_user_data(cursor, login):
     sqlite_read_query = """select * from Users where login =? """
@@ -43,27 +71,28 @@ def get_user_data(cursor, login):
 #change Пользователи
 def set_user_data(login, password):
     sqlite_update_query = """insert into Users values (?,?)"""
-    cursor.execute(sqlite_update_query, (login,), (password,))
+    cursor.execute(sqlite_update_query, (login, password))
+    return True
 
 #to log in
-def sign_in(cursor, login, password):
-    results = get_user_data(cursor, login) #get such user like [(1, 'darkur', 'ILOVEHSE')]
+def sign_in(login, password):
+    results = get_user_data(cursor, login) #get such user like [('darkur', 'ILOVEHSE')]
     if len(results) == 0: #if no such user
         raise KeyError("No such user")
     else:
-        true_password = results[0][0][2]
+        true_password = results[0][0][1]
         if true_password != password: #if password correct
             raise KeyError("Wrong password")
         else:
             return True
 
 #зарегаться
-def sign_up(cursor, login, password):
-    results = get_user_data(cursor, login) #get such user like [(1, 'darkur', 'ILOVEHSE')]
+def sign_up(login, password):
+    results = get_user_data(login) #get such user like [('darkur', 'ILOVEHSE')]
     if len(results) == 1: #if user exists
         raise KeyError("User with such login exists")
     else:
-        set_user_data(cursor, login, password) #add new user
+        set_user_data(login, password) #add new user
         return True
 
 
@@ -91,4 +120,7 @@ finally:
         sqlite_connection.close()
         print("Соединение с SQLite закрыто")
 '''
+
+create_user_table()
+create_project_table()
 create_swot_table()
