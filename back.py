@@ -1,4 +1,10 @@
 import sqlite3
+from sqlite3 import Error
+sqlite_connection= None; #подклюение к бд
+bd="swot.db" #файл с бд
+current_user=""; #текущий логин пользователя
+#создаем БД со всеми таблицами, вызывается единожды
+
 
 
 
@@ -54,9 +60,8 @@ def sign_up(cursor, login, password):
 def get_plot():
     pass
 
-
 try:
-    sqlite_connection = sqlite3.connect('sqlite_python.db')
+    sqlite_connection = sqlite3.connect(bd)
     cursor = sqlite_connection.cursor()
     print("База данных создана и успешно подключена к SQLite")
 
@@ -65,10 +70,10 @@ try:
     record = cursor.fetchall()
     print("Версия базы данных SQLite: ", record)
     cursor.close()
-
 except sqlite3.Error as error:
     print("Ошибка при подключении к sqlite", error)
 finally:
     if (sqlite_connection):
         sqlite_connection.close()
         print("Соединение с SQLite закрыто")
+
