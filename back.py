@@ -5,9 +5,8 @@ cursor=None; #курсор для работы с бд
 bd="swot.db" #файл с бд
 current_user=""; #текущий логин пользователя
 current_project="";
+types=["strengths","weaknesses","opportunities","threats"]
 #создаем БД со всеми таблицами, вызывается единожды
-
-
 
 def create_swot_table():
     cursor.execute("CREATE TABLE IF NOT EXISTS Swot(line integer, project integer,type text,"
@@ -51,6 +50,29 @@ def get_swot_data(type):
         results.append(row)
     return results
     # return [{id:n0,name:n1,action:n2,importance:n3,probability:n4,power:n5},{}]
+#возвращает словарь с резулатом по каждому показателю {strengths:10,opportunities:9.. },а также общий результат по все показателям
+def count_swot():
+    swot={}
+    for t in types:
+        res=get_swot_data(t)
+        tmp=[]
+        for r in res:
+            tmp.append(r["power"])
+        swot[t]=sum(tmp)
+    result=0
+    for s in swot:
+        if(s=="strengths" or s=="opportunities"):
+            result=result+swot[s]
+        else:
+            result=result-swot[s]
+    return swot,result
+
+
+
+
+
+
+
 
 #Функция обновления информации по своту
 def set_swot_data(line, type, name, action, importance, probability):
@@ -158,9 +180,9 @@ finally:
         print("Соединение с SQLite закрыто")
 '''
 
-create_user_table()
-create_project_table()
-create_swot_table()
+#create_user_table()
+#create_project_table()
+#create_swot_table()
 
 
 
