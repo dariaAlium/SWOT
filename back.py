@@ -173,7 +173,147 @@ def get_com_plot():
     plt.grid(True)
     plt.show()
 
+def create_proceeds_table():
+    sqlite_select_query = """CREATE TABLE IF NOT EXISTS proceedsPlan (
+        line integer AUTOINCREMENT NOT NULL,
+        project integer NOT NULL,
+        service text NOT NULL,
+        price integer NOT NULL,
+        amount_per_year integer NOT NULL,
+        FOREIGN KEY (project) REFERENCES Projects (id)
+    );"""
+    cursor.execute(sqlite_select_query)
+    return True
 
+
+def create_salary_table():
+    sqlite_select_query = """CREATE TABLE IF NOT EXISTS salary (
+        line integer AUTOINCREMENT NOT NULL,
+        project integer NOT NULL,
+        occupation text NOT NULL,
+        payment integer NOT NULL,
+        revenue_percentage integer,
+        tax integer NOT NULL,
+        insurance integer NOT NULL,
+        FOREIGN KEY (project) REFERENCES Projects (id)
+    );"""
+    cursor.execute(sqlite_select_query)
+    return True
+
+
+def create_loan_table():
+    sqlite_select_query = """CREATE TABLE IF NOT EXISTS loan (
+        line integer AUTOINCREMENT NOT NULL,
+        project integer NOT NULL,
+        credit_sum integer NOT NULL,
+        percentage integer NOT NULL,
+        period NOT NULL,
+        FOREIGN KEY (project) REFERENCES Projects (id)
+    );"""
+    cursor.execute(sqlite_select_query)
+    return True
+
+
+def create_expenses_table():
+    sqlite_select_query = """CREATE TABLE IF NOT EXISTS expensesPlan (
+        line integer AUTOINCREMENT NOT NULL,
+        project integer NOT NULL,
+        name text NOT NULL,
+        cost integer NOT NULL,
+        FOREIGN KEY (project) REFERENCES Projects (id)
+    );"""
+    cursor.execute(sqlite_select_query)
+    return True
+
+#посчитать плановый доход
+def get_proceeds_data():
+    sqlite_read_query = """select * from proceedsPlan where project = ?"""
+    #id project service price amount
+    cursor.execute(sqlite_read_query, current_project)
+    tmp_res = cursor.fetchall()
+    if len(tmp_res) != 0:
+        result = {"total": 0}
+        for res in tmp_res:
+            result["total"] = result["total"] + res[3]*res[4]
+        return result
+    # return {total: n0}
+
+
+#Функция добавления информации по доходам
+def set_proceeds_data(service, price, amount):
+    sqlite_insert_query = """insert into proceeds (project, service, price, amount) values (?,?,?,?)"""
+    cursor.execute(sqlite_insert_query, (current_project, service, price, amount))
+
+
+#посчитать зарплатные затраты
+def get_salary_data():
+    sqlite_read_query = """select * from salary where project = ?"""
+    #id project occupation perm_salary revenue_percentage tax insurance
+    cursor.execute(sqlite_read_query, current_project)
+    tmp_res = cursor.fetchall()
+    if len(tmp_res) != 0:
+    #если бд не пустая
+        proceed = get_proceeds_data()
+        if len(proceed) != 0:
+            result = []
+            for res in tmp_res:
+                row = {"perm_salary": res[3],
+                       "temp_salary": res[4] * proceed["total"] / 100}
+                row["all_salary"] = row["perm_salary"] + row["temp_salary"]
+                row["tax_value"] = row["all_salary"]*res[5]/100
+                row["insurance_value"] = row["all_salary"]*res[6]/100
+                row["all_payment"] = row["all_salary"] + row["insurance_value"]
+                result.append(row)
+            return result
+    # return [{perm_salary: n0, temp_salary: n1, all_salary: n2, ..}, {..}]
+
+
+#Функция добавления информации по зарплате
+def set_salary_data(occupation, perm_salary, revenue_percentage, tax, insurance):
+    sqlite_insert_query = """insert into salary (project, occupation, perm_salary, 
+    revenue_percentage, tax, insurance) values (?,?,?,?,?,?)"""
+    cursor.execute(sqlite_insert_query, (current_project, occupation, perm_salary, revenue_percentage, tax, insurance))
+
+
+#посчитать кредит
+def get_loan_data():
+    sqlite_read_query = """select * from loan where project = ?"""
+    #id project credit_sum percentage period
+    cursor.execute(sqlite_read_query, current_project)
+    tmp_res = cursor.fetchall()
+    if len(tmp_res) != 0:
+        result = {"total": 0, "overpay": 0} #если кредитов несколько, все посчитаются в одну кучу
+        for res in tmp_res:
+            result["overpay"] = result["overpay"] + res[2]*res[3]*res[4]
+            result["total"] = result["total"] + res[2] + result["overpay"]
+        return result
+    # return {overpay: n0, total: n1}
+
+
+#Функция добавления информации по кредиту
+def set_loan_data(credit_sum, percentage, period):
+    sqlite_insert_query = """insert into loan (project, credit_sum, percentage, period) values (?,?,?,?)"""
+    cursor.execute(sqlite_insert_query, (current_project, credit_sum, percentage, period))
+
+
+#посчитать планируемые расходы
+def get_expenses_data():
+    sqlite_read_query = """select * from expensesPlan where project = ?"""
+    #id project name cost
+    cursor.execute(sqlite_read_query, current_project)
+    tmp_res = cursor.fetchall()
+    if len(tmp_res) != 0:
+        result = {"total": 0}
+        for res in tmp_res:
+            result["total"] = result["total"] + res[2]*res[3]
+        return result
+    # return {total: n0}
+
+
+#Функция добавления информации по планируемым расходам
+def set_expenses_data(name, cost):
+    sqlite_insert_query = """insert into loan (project, name, cost) values (?,?,?)"""
+    cursor.execute(sqlite_insert_query, (current_project, name, cost))
 
 
 
