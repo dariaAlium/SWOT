@@ -11,8 +11,8 @@ current_project="";
 
 def create_swot_table():
     cursor.execute("CREATE TABLE IF NOT EXISTS Swot(line integer, project integer,type text,"
-                   "name text, action text, importance text, probability text,FOREIGN KEY (project) REFERENCES "
-                   "projects (id))")
+                   "name text, action text, importance integer, probability integer,FOREIGN KEY (project) REFERENCES "
+                   "Projects (id))")
     return True
 
 def create_project_table():
@@ -34,15 +34,36 @@ def create_user_table():
     return True
 
 #Функция для получения информации по своту для каждой из категорий
+
 def get_swot_data(type):
-    #read Swot
-    pass
+    sqlite_read_query = """select * from Swot where project =? and type=? """
+    cursor.execute(sqlite_read_query, (current_project,type))
+    tmp_res=cursor.fetchall()
+    results=[]
+    for res in tmp_res:
+        row={}
+        row["id"]=res[0]
+        row["name"]=res[3]
+        row["action"]=res[4]
+        row["importance"]=res[5]
+        row["probability"]=res[6]
+        row["power"]=res[5]*res[6]
+        results.append(row)
+    return results
     # return [{id:n0,name:n1,action:n2,importance:n3,probability:n4,power:n5},{}]
 
 #Функция обновления информации по своту
-def set_swot_data(line,type,name,action,importance,probabilty):
-
-
+def set_swot_data(line, type, name, action, importance, probability):
+    sqlite_read_query = """select * from Swot where line =? and project=? and type=?"""
+    cursor.execute(sqlite_read_query, (line, current_project, type))
+    results = cursor.fetchall()
+    if (len(results) != 0):
+        sqlite_update_query = ("UPDATE Swot SET name = ?,action=?,importance=?,probability=? "
+                               "WHERE  line =? and project=? and type=?")
+        cursor.execute(sqlite_update_query, (name,action,importance,probability,line,current_project,type ))
+    else:
+        sqlite_insert_query = """insert into Swot values (?,?,?,?,?,?,?)"""
+        cursor.execute(sqlite_insert_query, (line, current_project,type,name,action,importance,probability))
     #read Swot
     pass
 
@@ -148,4 +169,5 @@ sqlite_connection.commit()
 cursor.close()
 sqlite_connection.close()
 print("Соединение с SQLite закрыто")
+
 
