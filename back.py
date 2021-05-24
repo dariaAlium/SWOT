@@ -1,4 +1,5 @@
 import sqlite3
+import matplotlib.pyplot as plt
 from sqlite3 import Error
 sqlite_connection= None; #подклюение к бд
 cursor=None; #курсор для работы с бд
@@ -27,7 +28,7 @@ def create_project_table():
 def create_user_table():
     sqlite_select_query = """CREATE TABLE IF NOT EXISTS Users (
         login text PRIMARY KEY,
-        password text NOT NULL,
+        password text NOT NULL
     );"""
     cursor.execute(sqlite_select_query)
     return True
@@ -150,8 +151,27 @@ def sign_up(login, password):
 
 
 #функция для построения графиков
-def get_plot(type):
-    pass
+def get_sep_plot(type):
+    swot = get_swot_data(type)
+    index = []
+    for n in swot:
+        index.append(n['importance'])
+    values = list(range(1, len(index)+1))
+    plt.bar(values,index)
+    plt.xticks(list(range(1, len(index)+1)))
+    plt.grid(True)
+    plt.show()
+
+def get_com_plot():
+    swot = count_swot()[0]
+    index = []
+    for value in swot.values():
+        index.append(value)
+    values = list(range(1, len(index) + 1))
+    plt.bar(values, index)
+    plt.xticks(list(range(1, len(index) + 1)))
+    plt.grid(True)
+    plt.show()
 
 
 
@@ -170,6 +190,7 @@ try:
     record = cursor.fetchall()
     print("Версия базы данных SQLite: ", record)
 
+
 except sqlite3.Error as error:
     print("Ошибка при подключении к sqlite", error)
 ''''
@@ -180,11 +201,11 @@ finally:
         print("Соединение с SQLite закрыто")
 '''
 
-#create_user_table()
-#create_project_table()
-#create_swot_table()
+create_user_table()
+create_project_table()
+create_swot_table()
 
-
+get_com_plot()
 
 
 sqlite_connection.commit()
