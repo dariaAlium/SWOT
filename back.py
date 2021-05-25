@@ -158,7 +158,9 @@ def get_sep_plot(type):
     index = []
     for n in swot:
         index.append(n['importance'])
-    values = ['strengths','weaknesses','opportunities','threats']
+    values = []
+    for n in swot:
+        values.append(n['name'])
     fig = plt.bar(values,index)
     plt.xticks(list(range(1, len(index)+1)))
     plt.grid(True)
