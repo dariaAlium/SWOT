@@ -176,7 +176,11 @@ def get_com_plot():
         else:
             index.append(value)
     vals = ['strengths', 'weaknesses', 'opportunities', 'threats', 'result']
-    fig = plt.bar(vals, index)
+    
+    fig = plt.figure()
+    ax  = plt.gca()
+    
+    bars = ax.bar(vals, index)
     plt.grid(True)
     plt.show()
     #fig.savefig('com_plot.png')
