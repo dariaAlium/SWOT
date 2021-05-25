@@ -96,17 +96,19 @@ def change_project(new_project): #выбираем из доступных пр�
     return True
 
 def create_new_project(new_project):  #new_project - название проекта
+    print("def create_new_project(new_project)")
     sqlite_update_query = """insert into Projects (login,name) values (?,?)"""
     cursor.execute(sqlite_update_query, (current_user,new_project))
+    print(cursor.fetchall())
     global current_project
     current_project = new_project
     return True
 
 
 def view_all_projects():
-    sqlite_query = """select * from Projects where login=?"""
+    sqlite_query = """select name from Projects where login=?"""
     cursor.execute(sqlite_query, (current_user,))
-    return cursor.fetchall()
+    return [i[0] for i in cursor.fetchall()]
 
 # read Users
 def get_user_data(login):
