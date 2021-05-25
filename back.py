@@ -122,7 +122,9 @@ def set_user_data(password):
 
 #to log in
 def sign_in(login, password):
+    print("sign_in")
     results = get_user_data(login) #get such user like [('darkur', 'ILOVEHSE')]
+    print(results)
     if len(results) == 0: #if no such user
         raise KeyError("No such user")
     else:
@@ -318,9 +320,22 @@ def set_expenses_data(name, cost):
     cursor.execute(sqlite_insert_query, (current_project, name, cost))
 
 
+def for_closing():
+    sqlite_connection.commit()
 
+def init_conn():
+    sqlite_connection = sqlite3.connect(bd)
+    cursor = sqlite_connection.cursor()
+    print("База данных создана и успешно подключена к SQLite")
 
+    sqlite_select_query = "select sqlite_version();"
+    cursor.execute(sqlite_select_query)
+    record = cursor.fetchall()
+    print("Версия базы данных SQLite: ", record)
 
+    create_user_table()
+    create_project_table()
+    create_swot_table()
 
 try:
     sqlite_connection = sqlite3.connect(bd)
@@ -343,16 +358,14 @@ finally:
         print("Соединение с SQLite закрыто")
 '''
 
-create_user_table()
-create_project_table()
-create_swot_table()
-
-get_com_plot()
+#create_user_table()
+#create_project_table()
+#create_swot_table()
 
 
-sqlite_connection.commit()
-cursor.close()
-sqlite_connection.close()
-print("Соединение с SQLite закрыто")
+#sqlite_connection.commit()
+#cursor.close()
+#sqlite_connection.close()
+#print("Соединение с SQLite закрыто")
 
 
