@@ -122,7 +122,9 @@ def set_user_data(password):
 
 #to log in
 def sign_in(login, password):
+    print("sign_in")
     results = get_user_data(login) #get such user like [('darkur', 'ILOVEHSE')]
+    print(results)
     if len(results) == 0: #if no such user
         raise KeyError("No such user")
     else:
@@ -354,14 +356,14 @@ finally:
         print("Соединение с SQLite закрыто")
 '''
 
-create_user_table()
-create_project_table()
-create_swot_table()
+#create_user_table()
+#create_project_table()
+#create_swot_table()
 
 
-sqlite_connection.commit()
-cursor.close()
-sqlite_connection.close()
-print("Соединение с SQLite закрыто")
+#sqlite_connection.commit()
+#cursor.close()
+#sqlite_connection.close()
+#print("Соединение с SQLite закрыто")
 
 
