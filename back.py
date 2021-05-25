@@ -96,17 +96,19 @@ def change_project(new_project): #выбираем из доступных пр�
     return True
 
 def create_new_project(new_project):  #new_project - название проекта
+    print("def create_new_project(new_project)")
     sqlite_update_query = """insert into Projects (login,name) values (?,?)"""
     cursor.execute(sqlite_update_query, (current_user,new_project))
+    print(cursor.fetchall())
     global current_project
     current_project = new_project
     return True
 
 
 def view_all_projects():
-    sqlite_query = """select * from Projects where login=?"""
+    sqlite_query = """select name from Projects where login=?"""
     cursor.execute(sqlite_query, (current_user,))
-    return cursor.fetchall()
+    return [i[0] for i in cursor.fetchall()]
 
 # read Users
 def get_user_data(login):
@@ -179,7 +181,7 @@ def get_com_plot():
 
 def create_proceeds_table():
     sqlite_select_query = """CREATE TABLE IF NOT EXISTS proceedsPlan (
-        line integer AUTOINCREMENT NOT NULL,
+        line integer PRIMARY KEY AUTOINCREMENT NOT NULL,
         project integer NOT NULL,
         service text NOT NULL,
         price integer NOT NULL,
@@ -192,7 +194,7 @@ def create_proceeds_table():
 
 def create_salary_table():
     sqlite_select_query = """CREATE TABLE IF NOT EXISTS salary (
-        line integer AUTOINCREMENT NOT NULL,
+        line integer PRIMARY KEY AUTOINCREMENT NOT NULL,
         project integer NOT NULL,
         occupation text NOT NULL,
         payment integer NOT NULL,
@@ -207,7 +209,7 @@ def create_salary_table():
 
 def create_loan_table():
     sqlite_select_query = """CREATE TABLE IF NOT EXISTS loan (
-        line integer AUTOINCREMENT NOT NULL,
+        line integer PRIMARY KEY AUTOINCREMENT NOT NULL,
         project integer NOT NULL,
         credit_sum integer NOT NULL,
         percentage integer NOT NULL,
@@ -220,7 +222,7 @@ def create_loan_table():
 
 def create_expenses_table():
     sqlite_select_query = """CREATE TABLE IF NOT EXISTS expensesPlan (
-        line integer AUTOINCREMENT NOT NULL,
+        line integer PRIMARY KEY AUTOINCREMENT NOT NULL,
         project integer NOT NULL,
         name text NOT NULL,
         cost integer NOT NULL,
@@ -245,7 +247,7 @@ def get_proceeds_data():
 
 #Функция добавления информации по доходам
 def set_proceeds_data(service, price, amount):
-    sqlite_insert_query = """insert into proceeds (project, service, price, amount) values (?,?,?,?)"""
+    sqlite_insert_query = """insert into proceedsPlan (project, service, price, amount_per_year) values (?,?,?,?)"""
     cursor.execute(sqlite_insert_query, (current_project, service, price, amount))
 
 
@@ -336,6 +338,10 @@ def init_conn():
     create_user_table()
     create_project_table()
     create_swot_table()
+    create_proceeds_table()
+    create_salary_table()
+    create_loan_table()
+    create_expenses_table()
 
 try:
     sqlite_connection = sqlite3.connect(bd)
