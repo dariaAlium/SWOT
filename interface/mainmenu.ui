@@ -966,10 +966,18 @@
          </widget>
         </item>
         <item row="3" column="6">
-         <widget class="QSpinBox" name="spinBox_106"/>
+         <widget class="QSpinBox" name="spinBox_106">
+          <property name="value">
+           <number>10</number>
+          </property>
+         </widget>
         </item>
         <item row="5" column="6">
-         <widget class="QSpinBox" name="spinBox_107"/>
+         <widget class="QSpinBox" name="spinBox_107">
+          <property name="value">
+           <number>12</number>
+          </property>
+         </widget>
         </item>
         <item row="12" column="6">
          <widget class="QSpinBox" name="spinBox_108"/>
@@ -982,7 +990,11 @@
          </widget>
         </item>
         <item row="5" column="2">
-         <widget class="QSpinBox" name="spinBox_110"/>
+         <widget class="QSpinBox" name="spinBox_110">
+          <property name="value">
+           <number>1</number>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
