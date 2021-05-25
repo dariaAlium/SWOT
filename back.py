@@ -162,7 +162,6 @@ def get_sep_plot(type):
     for n in swot:
         values.append(n['name'])
     fig = plt.bar(values,index)
-    plt.xticks(list(range(1, len(index)+1)))
     plt.grid(True)
     plt.show()
     return 'sep_plot.png'
