@@ -100,8 +100,13 @@ def create_new_project(new_project):  #new_project - название проек
 
 def view_all_projects():
     sqlite_query = """select name from Projects where login=?"""
-    cursor.execute(sqlite_query, (current_user,))
-    return [i[0] for i in cursor.fetchall()]
+    print("Projects")
+    #sqlite_query = """select * from Projects"""
+    cursor.execute(sqlite_query,(current_user))
+    results = [i[0] for i in cursor.fetchall()]
+    print("results: ")
+    print(results)
+    return results
 
 # read Users
 def get_user_data(login):
@@ -157,7 +162,7 @@ def get_sep_plot(type):
     fig = plt.bar(values,index)
     plt.xticks(list(range(1, len(index)+1)))
     plt.grid(True)
-    fig.savefig('sep_plot.png')
+    plt.show()
     return 'sep_plot.png'
 
 def get_com_plot():
@@ -171,7 +176,8 @@ def get_com_plot():
     vals = ['strengths', 'weaknesses', 'opportunities', 'threats', 'result']
     fig = plt.bar(vals, index)
     plt.grid(True)
-    fig.savefig('com_plot.png')
+    plt.show()
+    #fig.savefig('com_plot.png')
     return 'com_plot.png'
 
 def create_proceeds_table():
@@ -271,7 +277,7 @@ def get_salary_data():
 
 #Функция добавления информации по зарплате
 def set_salary_data(occupation, perm_salary, revenue_percentage, tax, insurance):
-    sqlite_insert_query = """insert into salary (project, occupation, perm_salary, 
+    sqlite_insert_query = """insert into salary (project, occupation, payment, 
     revenue_percentage, tax, insurance) values (?,?,?,?,?,?)"""
     cursor.execute(sqlite_insert_query, (current_project, occupation, perm_salary, revenue_percentage, tax, insurance))
 
@@ -313,7 +319,7 @@ def get_expenses_data():
 
 #Функция добавления информации по планируемым расходам
 def set_expenses_data(name, cost):
-    sqlite_insert_query = """insert into loan (project, name, cost) values (?,?,?)"""
+    sqlite_insert_query = """insert into expensesPlan (project, name, cost) values (?,?,?)"""
     cursor.execute(sqlite_insert_query, (current_project, name, cost))
 
 

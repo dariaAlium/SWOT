@@ -12,16 +12,21 @@ class Ui_Main(QMainWindow):
         uic.loadUi('mainmenu.ui', self)
         # self.setFixedSize(500, 500)
         self.setFixedSize(900, 700)
-        self.get_weakness()
+        #self.get_weakness()
         self.pushButton.clicked.connect(self.set_weakness)
+        self.pushButton_2.clicked.connect(self.set_strengths)
+        self.pushButton_3.clicked.connect(self.set_opportunities)
+        self.pushButton_13.clicked.connect(self.set_threats)
         self.pushButton_5.clicked.connect(self.set_fin)
+        self.pushButton_14.clicked.connect(self.show_result)
         self.label_153.setPixmap(QtGui.QPixmap("D:/реклама/a.jpg"))
         self.questionThemeComboBox.addItems(view_all_projects())
-        self.questionThemeComboBox.currentIndexChanged.connect(self.choose_project)
+        #self.questionThemeComboBox.currentIndexChanged.connect(self.choose_project)
         self.themeTestButton.clicked.connect(self.view_project)
         self.genetalTestButton.clicked.connect(self.create_project)
 
         self.show()
+
 
     def set_fin(self):
         try:
@@ -31,6 +36,25 @@ class Ui_Main(QMainWindow):
             self.set_expenses()
         except Exception as e:
             print(e)
+        self.get_fin()
+
+    def get_fin(self):
+        res=get_proceeds_data()
+        self.label_59.setText(res["total"])
+        res=get_salary_data()
+        self.label_60.setText(res["perm_salary"])
+        self.label_61.setText(res["temp_salary"])
+        self.label_62.setText(res["all_salary"])
+        res=get_expenses_data()
+        self.label_63.setText(res["tax_value"])
+        self.label_64.setText(res["insurance_value"])
+        self.label_68.setText(res["all_payment"])
+        res=get_loan_data()
+        self.label_66.setText(res["overpay"])
+        self.label_67.setText(res["total"])
+
+    def show_result(self):
+        get_com_plot()
 
     def set_proceeds(self):
         service = self.lineEdit_104.text()
@@ -74,6 +98,7 @@ class Ui_Main(QMainWindow):
                     set_swot_data(i, "weaknesses", name, action, imp, prob)
 
             self.get_weakness()
+            get_sep_plot("weaknesses")
             self.label_153.setPixmap(QtGui.QPixmap("D:/реклама/a.jpg"))
         except Exception as e:
             print(e)

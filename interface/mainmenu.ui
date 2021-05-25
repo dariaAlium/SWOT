@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>6</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -989,7 +989,7 @@
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>Отчет</string>
+        <string>Фин отчет</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="2">
@@ -1155,13 +1155,24 @@
         </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_14">
-      <property name="text">
-       <string>Обновить</string>
-      </property>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>SWOT отчет</string>
+       </attribute>
+       <widget class="QPushButton" name="pushButton_14">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>190</y>
+          <width>631</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Просмотреть результат</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
