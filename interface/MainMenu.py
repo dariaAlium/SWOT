@@ -14,6 +14,9 @@ class Ui_Main(QMainWindow):
         self.setFixedSize(900, 700)
         #self.get_weakness()
         self.pushButton.clicked.connect(self.set_weakness)
+        self.pushButton_2.clicked.connect(self.set_strengths)
+        self.pushButton_3.clicked.connect(self.set_opportunities)
+        self.pushButton_13.clicked.connect(self.set_threats)
         self.pushButton_5.clicked.connect(self.set_fin)
         self.label_153.setPixmap(QtGui.QPixmap("D:/реклама/a.jpg"))
         self.questionThemeComboBox.addItems(view_all_projects())
@@ -92,6 +95,7 @@ class Ui_Main(QMainWindow):
                     set_swot_data(i, "weaknesses", name, action, imp, prob)
 
             self.get_weakness()
+            get_sep_plot("weaknesses")
             self.label_153.setPixmap(QtGui.QPixmap("D:/реклама/a.jpg"))
         except Exception as e:
             print(e)

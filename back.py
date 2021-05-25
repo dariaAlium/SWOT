@@ -162,8 +162,7 @@ def get_sep_plot(type):
     fig = plt.bar(values,index)
     plt.xticks(list(range(1, len(index)+1)))
     plt.grid(True)
-    plt.savefig('sep_plot.png')
-    fig.savefig('sep_plot.png')
+    plt.show()
     return 'sep_plot.png'
 
 def get_com_plot():
@@ -175,7 +174,8 @@ def get_com_plot():
     fig = plt.bar(values, index)
     plt.xticks(list(range(1, len(index) + 1)))
     plt.grid(True)
-    fig.savefig('com_plot.png')
+    plt.show()
+    #fig.savefig('com_plot.png')
     return 'com_plot.png'
 
 def create_proceeds_table():
