@@ -1,9 +1,9 @@
 from PyQt5 import uic
 from PyQt5 import QtWidgets
 import sys
-
 from PyQt5.QtWidgets import QMainWindow
 
+from back import *
 
 class Ui_LogIn(QMainWindow):
     def __init__(self):
@@ -14,6 +14,14 @@ class Ui_LogIn(QMainWindow):
         #self.show()
 
     def logInUI(self):
+        login = self.loginLine.text()
+        password = self.passwordLine.text()
+        results=sign_in(login,password)
+        self.errorLabel.setText(str("error"))
+        
+        self.close()
+        #self.Open = SecretQuestionWin(user)
+        #self.Open.show()
         print("hi")
 
 if __name__ == "__main__":
