@@ -1159,14 +1159,20 @@
        <attribute name="title">
         <string>SWOT отчет</string>
        </attribute>
+       <widget class="QPushButton" name="pushButton_14">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>190</y>
+          <width>631</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Просмотреть результат</string>
+        </property>
+       </widget>
       </widget>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_14">
-      <property name="text">
-       <string>Обновить</string>
-      </property>
      </widget>
     </item>
    </layout>
