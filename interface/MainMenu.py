@@ -18,6 +18,7 @@ class Ui_Main(QMainWindow):
         self.pushButton_3.clicked.connect(self.set_opportunities)
         self.pushButton_13.clicked.connect(self.set_threats)
         self.pushButton_5.clicked.connect(self.set_fin)
+        self.pushButton_14.clicked.connect(self.show_result)
         self.label_153.setPixmap(QtGui.QPixmap("D:/реклама/a.jpg"))
         self.questionThemeComboBox.addItems(view_all_projects())
         #self.questionThemeComboBox.currentIndexChanged.connect(self.choose_project)
@@ -52,6 +53,8 @@ class Ui_Main(QMainWindow):
         self.label_66.setText(res["overpay"])
         self.label_67.setText(res["total"])
 
+    def show_result(self):
+        get_com_plot()
 
     def set_proceeds(self):
         service = self.lineEdit_104.text()
