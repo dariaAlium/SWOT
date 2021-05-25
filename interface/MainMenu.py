@@ -23,6 +23,7 @@ class Ui_Main(QMainWindow):
 
         self.show()
 
+
     def set_fin(self):
         try:
             self.set_proceeds()
@@ -31,6 +32,23 @@ class Ui_Main(QMainWindow):
             self.set_expenses()
         except Exception as e:
             print(e)
+        self.get_fin()
+
+    def get_fin(self):
+        res=get_proceeds_data()
+        self.label_59.setText(res["total"])
+        res=get_salary_data()
+        self.label_60.setText(res["perm_salary"])
+        self.label_61.setText(res["temp_salary"])
+        self.label_62.setText(res["all_salary"])
+        res=get_expenses_data()
+        self.label_63.setText(res["tax_value"])
+        self.label_64.setText(res["insurance_value"])
+        self.label_68.setText(res["all_payment"])
+        res=get_loan_data()
+        self.label_66.setText(res["overpay"])
+        self.label_67.setText(res["total"])
+
 
     def set_proceeds(self):
         service = self.lineEdit_104.text()
