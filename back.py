@@ -316,9 +316,22 @@ def set_expenses_data(name, cost):
     cursor.execute(sqlite_insert_query, (current_project, name, cost))
 
 
+def for_closing():
+    sqlite_connection.commit()
 
+def init_conn():
+    sqlite_connection = sqlite3.connect(bd)
+    cursor = sqlite_connection.cursor()
+    print("База данных создана и успешно подключена к SQLite")
 
+    sqlite_select_query = "select sqlite_version();"
+    cursor.execute(sqlite_select_query)
+    record = cursor.fetchall()
+    print("Версия базы данных SQLite: ", record)
 
+    create_user_table()
+    create_project_table()
+    create_swot_table()
 
 try:
     sqlite_connection = sqlite3.connect(bd)
@@ -344,8 +357,6 @@ finally:
 create_user_table()
 create_project_table()
 create_swot_table()
-
-get_com_plot()
 
 
 sqlite_connection.commit()
