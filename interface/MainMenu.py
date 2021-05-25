@@ -13,18 +13,34 @@ class Ui_Main(QMainWindow):
         # self.setFixedSize(500, 500)
         self.setFixedSize(900, 700)
         #self.get_weakness()
+        self.set_res_fin()
         self.pushButton.clicked.connect(self.set_weakness)
         self.pushButton_2.clicked.connect(self.set_strengths)
         self.pushButton_3.clicked.connect(self.set_opportunities)
         self.pushButton_13.clicked.connect(self.set_threats)
-        self.pushButton_5.clicked.connect(self.set_fin)
-        self.label_153.setPixmap(QtGui.QPixmap("D:/реклама/a.jpg"))
+        #self.pushButton_5.clicked.connect(self.set_fin)
+        self.pushButton_5.clicked.connect(self.change_res)
         self.questionThemeComboBox.addItems(view_all_projects())
         #self.questionThemeComboBox.currentIndexChanged.connect(self.choose_project)
         self.themeTestButton.clicked.connect(self.view_project)
         self.genetalTestButton.clicked.connect(self.create_project)
 
         self.show()
+#удалить
+    def change_res(self):
+        self.label_59.setText("600")
+
+#удалить
+    def set_res_fin(self):
+        self.label_59.setText("100")
+        self.label_60.setText("10000")
+        self.label_61.setText("0")
+        self.label_62.setText("10000")
+        self.label_63.setText("0")
+        self.label_64.setText("0")
+        self.label_68.setText("500")
+        self.label_66.setText("100")
+        self.label_67.setText("1100")
 
 
     def set_fin(self):
@@ -208,7 +224,7 @@ class Ui_Main(QMainWindow):
 
             self.get_threats()
             get_sep_plot("threats")
-            self.label_153.setPixmap(QtGui.QPixmap("sep_plot.png"))
+            #self.label_153.setPixmap(QtGui.QPixmap("sep_plot.png"))
         except Exception as e:
             print(e)
 

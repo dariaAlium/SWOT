@@ -232,6 +232,8 @@ def create_expenses_table():
 
 #посчитать плановый доход
 def get_proceeds_data():
+    global current_project
+    current_project = 1
     sqlite_read_query = """select * from proceedsPlan where project = ?"""
     #id project service price amount
     cursor.execute(sqlite_read_query, current_project)
@@ -246,6 +248,8 @@ def get_proceeds_data():
 
 #Функция добавления информации по доходам
 def set_proceeds_data(service, price, amount):
+    global current_project
+    current_project=1
     sqlite_insert_query = """insert into proceedsPlan (project, service, price, amount_per_year) values (?,?,?,?)"""
     cursor.execute(sqlite_insert_query, (current_project, service, price, amount))
 
