@@ -4,6 +4,7 @@ import sys
 from PyQt5.QtWidgets import QMainWindow
 
 from back import *
+from MainMenu import *
 
 
 class Ui_LogIn(QMainWindow):
@@ -30,11 +31,16 @@ class Ui_LogIn(QMainWindow):
             if results:
                 self.errorLabel.setText(str("success"))
                 print("success")
+                self.close()
+                print("self.close()")
+                self.Open = Ui_Main()
+                self.Open.show()
             # self.close()
             #self.Open.show()
         except Exception as e:
             print(e)
             self.errorLabel.setText(str(e))
+
 
         # self.close()
         # self.Open = SecretQuestionWin(user)
@@ -51,14 +57,14 @@ class Ui_LogIn(QMainWindow):
             if results:
                 self.errorLabel.setText(str("success"))
                 print("success")
+                self.close()
+                print("self.close()")
+                self.Open = Ui_Main()
+                self.Open.show()
             # self.close()
             #self.Open.show()
         except Exception as e:
             self.errorLabel.setText(str(e))
-
-        # self.close()
-        # self.Open = SecretQuestionWin(user)
-        # self.Open.show()
 
 
     def closeEvent(self, event):
