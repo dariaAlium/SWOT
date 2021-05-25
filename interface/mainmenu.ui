@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>639</width>
-    <height>389</height>
+    <width>552</width>
+    <height>474</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -76,46 +76,94 @@
         <string>Weaknesses</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="7" column="2" colspan="2">
+        <item row="2" column="3">
+         <widget class="QSpinBox" name="spinBox_3">
+          <property name="maximum">
+           <number>10</number>
+          </property>
+          <property name="singleStep">
+           <number>1</number>
+          </property>
+          <property name="displayIntegerBase">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QLineEdit" name="lineEdit_9"/>
+        </item>
+        <item row="3" column="4">
+         <widget class="QSpinBox" name="spinBox_6">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLabel" name="label_20">
+          <property name="text">
+           <string>Probability</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="2">
          <widget class="QPushButton" name="pushButton">
           <property name="text">
            <string>Отправить</string>
           </property>
          </widget>
         </item>
-        <item row="6" column="8">
-         <widget class="QLabel" name="label_26">
-          <property name="text">
-           <string/>
+        <item row="1" column="2">
+         <widget class="QLineEdit" name="lineEdit_3"/>
+        </item>
+        <item row="4" column="4">
+         <widget class="QSpinBox" name="spinBox_8">
+          <property name="maximum">
+           <number>100</number>
           </property>
          </widget>
         </item>
-        <item row="8" column="3">
-         <widget class="QGraphicsView" name="graphicsView"/>
-        </item>
-        <item row="6" column="7">
-         <widget class="QSpinBox" name="spinBox_10"/>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="label_18">
-          <property name="text">
-           <string>Action</string>
+        <item row="5" column="4">
+         <widget class="QSpinBox" name="spinBox_10">
+          <property name="maximum">
+           <number>100</number>
           </property>
          </widget>
         </item>
-        <item row="6" column="5" colspan="2">
-         <widget class="QSpinBox" name="spinBox_9"/>
+        <item row="2" column="2">
+         <widget class="QLineEdit" name="lineEdit_5"/>
         </item>
-        <item row="3" column="5" colspan="2">
-         <widget class="QSpinBox" name="spinBox_3"/>
+        <item row="1" column="4">
+         <widget class="QSpinBox" name="spinBox_2">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+         </widget>
         </item>
-        <item row="5" column="7">
-         <widget class="QSpinBox" name="spinBox_8"/>
+        <item row="1" column="3">
+         <widget class="QSpinBox" name="spinBox">
+          <property name="maximum">
+           <number>10</number>
+          </property>
+         </widget>
         </item>
-        <item row="3" column="8">
-         <widget class="QLabel" name="label_23">
-          <property name="text">
-           <string/>
+        <item row="4" column="3">
+         <widget class="QSpinBox" name="spinBox_7">
+          <property name="maximum">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QLineEdit" name="lineEdit_2"/>
+        </item>
+        <item row="4" column="0" colspan="2">
+         <widget class="QLineEdit" name="lineEdit_8"/>
+        </item>
+        <item row="3" column="3">
+         <widget class="QSpinBox" name="spinBox_5">
+          <property name="maximum">
+           <number>10</number>
           </property>
          </widget>
         </item>
@@ -126,102 +174,104 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="8">
-         <widget class="QLabel" name="label_25">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2" colspan="3">
-         <widget class="QLineEdit" name="lineEdit_3"/>
-        </item>
-        <item row="2" column="5" colspan="2">
-         <widget class="QSpinBox" name="spinBox"/>
-        </item>
-        <item row="3" column="0" colspan="2">
+        <item row="2" column="0" colspan="2">
          <widget class="QLineEdit" name="lineEdit_4"/>
         </item>
-        <item row="4" column="7">
-         <widget class="QSpinBox" name="spinBox_6"/>
-        </item>
-        <item row="2" column="7">
-         <widget class="QSpinBox" name="spinBox_2"/>
-        </item>
-        <item row="3" column="7">
-         <widget class="QSpinBox" name="spinBox_4"/>
-        </item>
-        <item row="4" column="8">
-         <widget class="QLabel" name="label_24">
+        <item row="8" column="0" rowspan="4" colspan="5">
+         <widget class="QLabel" name="label_153">
           <property name="text">
            <string/>
           </property>
          </widget>
         </item>
-        <item row="4" column="2" colspan="3">
-         <widget class="QLineEdit" name="lineEdit_7"/>
-        </item>
-        <item row="2" column="0" colspan="2">
-         <widget class="QLineEdit" name="lineEdit_2"/>
-        </item>
-        <item row="5" column="0" colspan="2">
-         <widget class="QLineEdit" name="lineEdit_8"/>
-        </item>
-        <item row="4" column="5" colspan="2">
-         <widget class="QSpinBox" name="spinBox_5"/>
-        </item>
-        <item row="5" column="2" colspan="3">
-         <widget class="QLineEdit" name="lineEdit_9"/>
-        </item>
-        <item row="2" column="8">
-         <widget class="QLabel" name="label_22">
-          <property name="text">
-           <string/>
+        <item row="2" column="4">
+         <widget class="QSpinBox" name="spinBox_4">
+          <property name="maximum">
+           <number>100</number>
           </property>
          </widget>
         </item>
-        <item row="5" column="5" colspan="2">
-         <widget class="QSpinBox" name="spinBox_7"/>
-        </item>
-        <item row="4" column="0" colspan="2">
-         <widget class="QLineEdit" name="lineEdit_6"/>
-        </item>
-        <item row="3" column="2" colspan="3">
-         <widget class="QLineEdit" name="lineEdit_5"/>
-        </item>
-        <item row="6" column="2" colspan="3">
-         <widget class="QLineEdit" name="lineEdit_11"/>
-        </item>
-        <item row="6" column="0" colspan="2">
-         <widget class="QLineEdit" name="lineEdit_10"/>
-        </item>
-        <item row="0" column="8">
-         <widget class="QLabel" name="label_21">
-          <property name="text">
-           <string>Power</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="7">
-         <widget class="QLabel" name="label_20">
-          <property name="text">
-           <string>Probability</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5">
+        <item row="0" column="3">
          <widget class="QLabel" name="label_19">
           <property name="text">
            <string>Importance</string>
           </property>
          </widget>
         </item>
-        <item row="8" column="0" colspan="2">
+        <item row="0" column="5">
+         <widget class="QLabel" name="label_21">
+          <property name="text">
+           <string>Power</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QLineEdit" name="lineEdit_11"/>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLineEdit" name="lineEdit_7"/>
+        </item>
+        <item row="3" column="0" colspan="2">
+         <widget class="QLineEdit" name="lineEdit_6"/>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_18">
+          <property name="text">
+           <string>Action</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="3">
+         <widget class="QSpinBox" name="spinBox_9">
+          <property name="maximum">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="0" colspan="2">
          <widget class="QLabel" name="error">
           <property name="text">
            <string/>
           </property>
          </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QLabel" name="label_22">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="5">
+         <widget class="QLabel" name="label_23">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="5">
+         <widget class="QLabel" name="label_24">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="5">
+         <widget class="QLabel" name="label_25">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="5">
+         <widget class="QLabel" name="label_26">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLineEdit" name="lineEdit_10"/>
         </item>
        </layout>
       </widget>
@@ -752,15 +802,6 @@
           </property>
          </widget>
         </item>
-        <item row="15" column="2">
-         <widget class="QLineEdit" name="lineEdit_111"/>
-        </item>
-        <item row="3" column="6">
-         <widget class="QLineEdit" name="lineEdit_112"/>
-        </item>
-        <item row="10" column="2">
-         <widget class="QLineEdit" name="lineEdit_107"/>
-        </item>
         <item row="12" column="3">
          <widget class="QLabel" name="label_151">
           <property name="layoutDirection">
@@ -795,12 +836,6 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="2">
-         <widget class="QLineEdit" name="lineEdit_106"/>
-        </item>
-        <item row="14" column="2">
-         <widget class="QLineEdit" name="lineEdit_110"/>
-        </item>
         <item row="2" column="3" colspan="3">
          <widget class="QLabel" name="label_15">
           <property name="layoutDirection">
@@ -821,23 +856,8 @@
           </property>
          </widget>
         </item>
-        <item row="12" column="2">
-         <widget class="QLineEdit" name="lineEdit_108"/>
-        </item>
-        <item row="2" column="6">
-         <widget class="QLineEdit" name="lineEdit_114"/>
-        </item>
-        <item row="12" column="6">
-         <widget class="QLineEdit" name="lineEdit_115"/>
-        </item>
         <item row="2" column="2">
          <widget class="QLineEdit" name="lineEdit_104"/>
-        </item>
-        <item row="3" column="2">
-         <widget class="QLineEdit" name="lineEdit_105"/>
-        </item>
-        <item row="5" column="6">
-         <widget class="QLineEdit" name="lineEdit_113"/>
         </item>
         <item row="5" column="3">
          <widget class="QLabel" name="label_14">
@@ -918,6 +938,52 @@
            <string>Отправить</string>
           </property>
          </widget>
+        </item>
+        <item row="12" column="2">
+         <widget class="QSpinBox" name="spinBox_101">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item row="14" column="2">
+         <widget class="QSpinBox" name="spinBox_102">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item row="15" column="2">
+         <widget class="QSpinBox" name="spinBox_103">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="2">
+         <widget class="QSpinBox" name="spinBox_104">
+          <property name="maximum">
+           <number>100000000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="6">
+         <widget class="QSpinBox" name="spinBox_105"/>
+        </item>
+        <item row="3" column="6">
+         <widget class="QSpinBox" name="spinBox_106"/>
+        </item>
+        <item row="5" column="6">
+         <widget class="QSpinBox" name="spinBox_107"/>
+        </item>
+        <item row="12" column="6">
+         <widget class="QSpinBox" name="spinBox_108"/>
+        </item>
+        <item row="3" column="2">
+         <widget class="QSpinBox" name="spinBox_109"/>
+        </item>
+        <item row="5" column="2">
+         <widget class="QSpinBox" name="spinBox_110"/>
         </item>
        </layout>
       </widget>
