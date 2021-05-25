@@ -116,10 +116,10 @@ def create_new_project(new_project):  # new_project - название прое�
 
 
 def view_all_projects():
-    #sqlite_query = """select name from Projects where login=?"""
+    sqlite_query = """select name from Projects where login=?"""
     print("Projects")
-    sqlite_query = """select * from Projects"""
-    cursor.execute(sqlite_query)
+    #sqlite_query = """select * from Projects"""
+    cursor.execute(sqlite_query,(current_user))
     results = [i[0] for i in cursor.fetchall()]
     print("results: ")
     print(results)
@@ -301,7 +301,7 @@ def get_salary_data():
 
 # Функция добавления информации по зарплате
 def set_salary_data(occupation, perm_salary, revenue_percentage, tax, insurance):
-    sqlite_insert_query = """insert into salary (project, occupation, perm_salary, 
+    sqlite_insert_query = """insert into salary (project, occupation, payment, 
     revenue_percentage, tax, insurance) values (?,?,?,?,?,?)"""
     cursor.execute(sqlite_insert_query, (current_project, occupation, perm_salary, revenue_percentage, tax, insurance))
 
@@ -343,7 +343,7 @@ def get_expenses_data():
 
 # Функция добавления информации по планируемым расходам
 def set_expenses_data(name, cost):
-    sqlite_insert_query = """insert into loan (project, name, cost) values (?,?,?)"""
+    sqlite_insert_query = """insert into expensesPlan (project, name, cost) values (?,?,?)"""
     cursor.execute(sqlite_insert_query, (current_project, name, cost))
 
 

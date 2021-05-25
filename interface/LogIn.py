@@ -4,7 +4,9 @@ import sys
 from PyQt5.QtWidgets import QMainWindow
 
 from back import *
-from MainMenu import *
+#from MainMenu import *
+
+from interface.MainMenu import Ui_Main
 
 
 class Ui_LogIn(QMainWindow):
