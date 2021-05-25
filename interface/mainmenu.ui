@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>552</width>
+    <width>649</width>
     <height>474</height>
    </rect>
   </property>
@@ -15,10 +15,10 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_4">
-    <item row="0" column="0">
+    <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -991,39 +991,177 @@
        <attribute name="title">
         <string>Отчет</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_9">
+       <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="2">
-         <widget class="QLabel" name="label_152">
+         <widget class="QLabel" name="label_47">
           <property name="text">
-           <string>Отчет по финансовому анализу</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <string>Наименование</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="0" rowspan="2" colspan="2">
-         <widget class="QGraphicsView" name="graphicsView_11"/>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_48">
+          <property name="text">
+           <string>Значение</string>
+          </property>
+         </widget>
         </item>
-        <item row="1" column="2" rowspan="2">
-         <widget class="QTableView" name="tableView"/>
+        <item row="1" column="1" colspan="2">
+         <widget class="QLabel" name="label_49">
+          <property name="text">
+           <string>Планируемый доход за год</string>
+          </property>
+         </widget>
         </item>
-        <item row="2" column="1">
+        <item row="1" column="3">
+         <widget class="QLabel" name="label_59">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" colspan="2">
+         <widget class="QLabel" name="label_50">
+          <property name="text">
+           <string>Постоянная составляющая зарплаты</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QLabel" name="label_60">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1" colspan="2">
+         <widget class="QLabel" name="label_51">
+          <property name="text">
+           <string>Переменная составляющая зарплаты</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QLabel" name="label_61">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1" colspan="2">
+         <widget class="QLabel" name="label_52">
+          <property name="text">
+           <string>Зарплата (постоянная + переменная) с учетом НДФЛ</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QLabel" name="label_62">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLabel" name="label_53">
+          <property name="text">
+           <string>Сумма НДФЛ</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="3">
+         <widget class="QLabel" name="label_63">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QLabel" name="label_54">
+          <property name="text">
+           <string>Страховые взносы</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="3">
+         <widget class="QLabel" name="label_64">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="1" rowspan="2" colspan="2">
+         <widget class="QLabel" name="label_55">
+          <property name="text">
+           <string>Планируемые расходы на заработную плату и страховые взносы</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="3">
+         <widget class="QLabel" name="label_65">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="3" rowspan="2">
+         <widget class="QLabel" name="label_66">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="1" colspan="2">
+         <widget class="QLabel" name="label_56">
+          <property name="text">
+           <string>Переплата по кредиту</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="0" rowspan="2">
          <widget class="QLabel" name="results">
           <property name="text">
            <string/>
           </property>
          </widget>
         </item>
-        <item row="3" column="1" colspan="2">
-         <widget class="QPushButton" name="pushButton_14">
+        <item row="10" column="1" colspan="2">
+         <widget class="QLabel" name="label_57">
           <property name="text">
-           <string>Обновить</string>
+           <string>Годовая стоимость кредита</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="3">
+         <widget class="QLabel" name="label_67">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="1" colspan="2">
+         <widget class="QLabel" name="label_58">
+          <property name="text">
+           <string>Плановые расходы за год</string>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="3">
+         <widget class="QLabel" name="label_68">
+          <property name="text">
+           <string>TextLabel</string>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton_14">
+      <property name="text">
+       <string>Обновить</string>
+      </property>
      </widget>
     </item>
    </layout>
