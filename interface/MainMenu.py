@@ -53,20 +53,8 @@ class Ui_Main(QMainWindow):
             probability[i].setValue(r["probability"])
             power[i].setText(str(r["power"]))
 
-
-
-
-
-    def logInUI(self):
-        login = self.loginLine.text()
-        password = self.passwordLine.text()
-        results = sign_in(login, password)
-        self.errorLabel.setText(str("error"))
-
-        self.close()
-        # self.Open = SecretQuestionWin(user)
-        # self.Open.show()
-        print("hi")
+    def closeEvent(self, event):
+        sqlite_connection.commit()
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     myapp = Ui_Main()
