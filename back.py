@@ -157,10 +157,11 @@ def get_sep_plot(type):
     for n in swot:
         index.append(n['importance'])
     values = list(range(1, len(index)+1))
-    plt.bar(values,index)
+    fig = plt.bar(values,index)
     plt.xticks(list(range(1, len(index)+1)))
     plt.grid(True)
-    plt.show()
+    fig.savefig('sep_plot.png')
+    return 'sep_plot.png'
 
 def get_com_plot():
     swot = count_swot()[0]
@@ -168,10 +169,11 @@ def get_com_plot():
     for value in swot.values():
         index.append(value)
     values = list(range(1, len(index) + 1))
-    plt.bar(values, index)
+    fig = plt.bar(values, index)
     plt.xticks(list(range(1, len(index) + 1)))
     plt.grid(True)
-    plt.show()
+    fig.savefig('com_plot.png')
+    return 'com_plot.png'
 
 def create_proceeds_table():
     sqlite_select_query = """CREATE TABLE IF NOT EXISTS proceedsPlan (
