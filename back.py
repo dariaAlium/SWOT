@@ -68,13 +68,6 @@ def count_swot():
             result=result-swot[s]
     return swot,result
 
-
-
-
-
-
-
-
 #Функция обновления информации по своту
 def set_swot_data(line, type, name, action, importance, probability):
     sqlite_read_query = """select * from Swot where line =? and project=? and type=?"""
