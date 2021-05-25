@@ -1,5 +1,6 @@
 from PyQt5 import uic
 from PyQt5 import QtWidgets
+from PyQt5 import QtGui
 import sys
 from PyQt5.QtWidgets import QMainWindow
 from back import *
@@ -12,16 +13,51 @@ class Ui_Main(QMainWindow):
         # self.setFixedSize(500, 500)
         self.setFixedSize(900, 700)
         self.get_weakness()
-        try:
-            self.pushButton.clicked.connect(self.set_weakness)
-            self.questionThemeComboBox.addItems(view_all_projects())
-            self.questionThemeComboBox.currentIndexChanged.connect(self.choose_project)
-            self.themeTestButton.clicked.connect(self.view_project)
-            self.genetalTestButton.clicked.connect(self.create_project)
-        except Exception as e:
-            print(e)
+        self.pushButton.clicked.connect(self.set_weakness)
+        self.pushButton_5.clicked.connect(self.set_fin)
+        self.label_153.setPixmap(QtGui.QPixmap("D:/реклама/a.jpg"))
+        self.questionThemeComboBox.addItems(view_all_projects())
+        self.questionThemeComboBox.currentIndexChanged.connect(self.choose_project)
+        self.themeTestButton.clicked.connect(self.view_project)
+        self.genetalTestButton.clicked.connect(self.create_project)
+
 
         self.show()
+    def set_fin(self):
+        try:
+            self.set_proceeds()
+            self.set_salary()
+            self.set_loan()
+            self.set_expenses()
+        except Exception as e:
+            print(e)
+    def set_proceeds(self):
+        service=self.lineEdit_104.text()
+        price=self.spinBox_109.text()
+        amount=self.spinBox_110.text()
+        set_proceeds_data(service, price, amount)
+
+    def set_salary(self):
+        occupation=self.lineEdit_109.text()
+        perm_salary=self.spinBox_104.text()
+        revenue_percentage=self.spinBox_101.text()
+        tax=self.spinBox_102.text()
+        insurance=self.spinBox_103.text()
+        set_salary_data(occupation, perm_salary, revenue_percentage, tax, insurance)
+
+    def set_loan(self):
+        credit_sum=self.spinBox_105.text()
+        percentage = self.spinBox_106.text()
+        period = self.spinBox_107.text()
+        set_loan_data(credit_sum, percentage, period)
+
+    def set_expenses(self):
+        name=self.lineEdit_116.text()
+        cost = self.spinBox_108.text()
+        set_expenses_data(name, cost)
+
+
+
 
     def set_weakness(self):
         try:
