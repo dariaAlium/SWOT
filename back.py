@@ -174,7 +174,8 @@ def get_com_plot():
             index.append(value*(-1))
         else:
             index.append(value)
-    vals = ['strengths', 'weaknesses', 'opportunities', 'threats', 'result']
+    print()
+    vals = ['strengths', 'weaknesses', 'opportunities', 'threats']
     
     fig = plt.figure()
     ax  = plt.gca()

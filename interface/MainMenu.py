@@ -54,7 +54,10 @@ class Ui_Main(QMainWindow):
         self.label_67.setText(res["total"])
 
     def show_result(self):
-        get_com_plot()
+        try:
+            get_com_plot()
+        except Exception as e:
+            print(e)
 
     def set_proceeds(self):
         service = self.lineEdit_104.text()
