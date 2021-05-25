@@ -158,9 +158,10 @@ def get_sep_plot(type):
     index = []
     for n in swot:
         index.append(n['importance'])
-    values = list(range(1, len(index)+1))
+    values = []
+    for n in swot:
+        values.append(n['name'])
     fig = plt.bar(values,index)
-    plt.xticks(list(range(1, len(index)+1)))
     plt.grid(True)
     plt.show()
     return 'sep_plot.png'
@@ -168,11 +169,18 @@ def get_sep_plot(type):
 def get_com_plot():
     swot = count_swot()[0]
     index = []
-    for value in swot.values():
-        index.append(value)
-    values = list(range(1, len(index) + 1))
-    fig = plt.bar(values, index)
-    plt.xticks(list(range(1, len(index) + 1)))
+    for value, key in zip(swot.values(), swot.keys()):
+        if key in ['threats', 'weaknesses']:
+            index.append(value*(-1))
+        else:
+            index.append(value)
+    print()
+    vals = ['strengths', 'weaknesses', 'opportunities', 'threats']
+    
+    fig = plt.figure()
+    ax  = plt.gca()
+    
+    bars = ax.bar(vals, index)
     plt.grid(True)
     plt.show()
     #fig.savefig('com_plot.png')

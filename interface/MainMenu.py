@@ -18,8 +18,8 @@ class Ui_Main(QMainWindow):
         self.pushButton_2.clicked.connect(self.set_strengths)
         self.pushButton_3.clicked.connect(self.set_opportunities)
         self.pushButton_13.clicked.connect(self.set_threats)
-        #self.pushButton_5.clicked.connect(self.set_fin)
         self.pushButton_5.clicked.connect(self.change_res)
+        self.pushButton_14.clicked.connect(self.show_result)
         self.questionThemeComboBox.addItems(view_all_projects())
         #self.questionThemeComboBox.currentIndexChanged.connect(self.choose_project)
         self.themeTestButton.clicked.connect(self.view_project)
@@ -68,6 +68,11 @@ class Ui_Main(QMainWindow):
         self.label_66.setText(res["overpay"])
         self.label_67.setText(res["total"])
 
+    def show_result(self):
+        try:
+            get_com_plot()
+        except Exception as e:
+            print(e)
 
     def set_proceeds(self):
         service = self.lineEdit_104.text()
