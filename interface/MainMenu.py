@@ -64,6 +64,7 @@ class Ui_Main(QMainWindow):
             importance = [self.spinBox, self.spinBox_3, self.spinBox_5, self.spinBox_7, self.spinBox_9]
             probability = [self.spinBox_2, self.spinBox_4, self.spinBox_6, self.spinBox_8, self.spinBox_10]
             power = [self.label_22, self.label_23, self.label_24, self.label_25, self.label_26]
+            print("for")
             for i in range(0, 5):
                 print(i)
                 name = names[i].text()
@@ -72,8 +73,10 @@ class Ui_Main(QMainWindow):
                     imp = importance[i].text()
                     prob = probability[i].text()
                     set_swot_data(i, "weaknesses", name, action, imp, prob)
-
+                    sqlite_connection.commit()
+            print("set_swot_data")
             self.get_weakness()
+            get_sep_plot("weaknesses")
             self.label_153.setPixmap(QtGui.QPixmap("D:/реклама/a.jpg"))
         except Exception as e:
             print(e)
@@ -112,7 +115,7 @@ class Ui_Main(QMainWindow):
             self.get_strengths()
 
             get_sep_plot("strengths")
-            self.label_153.setPixmap(QtGui.QPixmap("sep_plot.png"))
+            self.graphicsView_2.setPixmap(QtGui.QPixmap("sep_plot.png"))
         except Exception as e:
             print(e)
 
@@ -149,7 +152,7 @@ class Ui_Main(QMainWindow):
 
             self.get_opportunities()
             get_sep_plot("opportunities")
-            self.label_153.setPixmap(QtGui.QPixmap("sep_plot.png"))
+            self.graphicsView_3.setPixmap(QtGui.QPixmap("sep_plot.png"))
         except Exception as e:
             print(e)
 
@@ -175,6 +178,7 @@ class Ui_Main(QMainWindow):
             importance = [self.spinBox_93, self.spinBox_100, self.spinBox_91, self.spinBox_94, self.spinBox_99]
             probability = [self.spinBox_96, self.spinBox_92, self.spinBox_95, self.spinBox_97, self.spinBox_98]
             power = [self.label_144, self.label_148, self.label_147, self.label_142, self.label_143]
+            print("for")
             for i in range(0, 5):
                 print(i)
                 name = names[i].text()
@@ -184,9 +188,10 @@ class Ui_Main(QMainWindow):
                     prob = probability[i].text()
                     set_swot_data(i, "threats", name, action, imp, prob)
 
+            print("set_swot_data")
             self.get_threats()
             get_sep_plot("threats")
-            self.label_153.setPixmap(QtGui.QPixmap("sep_plot.png"))
+            self.graphicsView_10.setPixmap(QtGui.QPixmap("sep_plot.png"))
         except Exception as e:
             print(e)
 
