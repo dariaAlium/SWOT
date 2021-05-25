@@ -116,9 +116,14 @@ def create_new_project(new_project):  # new_project - название прое�
 
 
 def view_all_projects():
-    sqlite_query = """select name from Projects where login=?"""
-    cursor.execute(sqlite_query, (current_user,))
-    return [i[0] for i in cursor.fetchall()]
+    #sqlite_query = """select name from Projects where login=?"""
+    print("Projects")
+    sqlite_query = """select * from Projects"""
+    cursor.execute(sqlite_query)
+    results = [i[0] for i in cursor.fetchall()]
+    print("results: ")
+    print(results)
+    return results
 
 
 # read Users
@@ -150,8 +155,6 @@ def sign_in(login, password):
             global current_user
             current_user = login
             global current_project
-            if len(view_all_projects()) !=0:
-                current_project = view_all_projects()[0]
             current_project = None
             return True
 
@@ -182,7 +185,7 @@ def get_sep_plot(type):
 
     plt.xticks(list(range(1, len(index) + 1)))
     plt.grid(True)
-    plt.show()
+    #plt.show()
     plt.savefig('sep_plot.png')
     return 'sep_plot.png'
 
